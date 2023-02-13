@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #config json
-JSON_PATH=./json/hosts.json
+JSON_PATH=$(dirname $0)/json/hosts.json
 
 #if hosts.json file doesn't found - throw error
 if [[ ! -f "$JSON_PATH" ]]
@@ -27,7 +27,7 @@ then
             PORT=$(cat $JSON_PATH | jq --raw-output ".hosts[$i].port")
             PASSWORD=$(cat $JSON_PATH | jq --raw-output ".hosts[$i].password")
             FOUND_CONNECTION=true
-            ./expect_connection $USER $HOST $PORT $PASSWORD
+            $(dirname $0)/expect_connection $USER $HOST $PORT $PASSWORD
         fi
     done
     if [ "$FOUND_CONNECTION" = false ]
