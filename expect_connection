@@ -1,5 +1,7 @@
 #!/usr/bin/expect -f
 
+set timeout 1
+
 #Connection data
 set USER [lindex $argv 0]
 set HOST [lindex $argv 1]
